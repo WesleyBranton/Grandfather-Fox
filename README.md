@@ -9,6 +9,7 @@ The add-on currently features a variety of audio packs, including:
 * Clock tower
 
 **CURRENT VERSION:** 1.4
+
 **PRODUCT PAGE:** [View Now](https://addons.mozilla.org/firefox/addon/grandfather-fox/)
 
 ## Release Notes
