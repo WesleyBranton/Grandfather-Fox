@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"name": "Grandfather Fox",
+	"version": "1.4",
+	"description": "Turn Firefox into a grandfather clock that plays a tune at the top of each hour!",
+
+	"icons": {
+		"48": "icons/icon-48.png",
+		"96": "icons/icon-96.png"
+	},
+	
+	"background": {
+		"scripts": [ "background.js" ]
+	},
+	
+	"options_ui": {
+		"page": "options/options.html"
+	},
+
+	"permissions": [
+		"alarms",
+		"storage"
+	]
+}

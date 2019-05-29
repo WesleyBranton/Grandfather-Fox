@@ -1,0 +1,14 @@
+fieldset {
+	border: 2px solid #0996f8;
+	border-radius: 5px;
+}
+
+legend {
+	background-color: #0996f8;
+	color: white;
+	border-radius: 3px;
+}
+
+#reload {
+	float: right;
+}
