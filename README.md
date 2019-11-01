@@ -1,4 +1,4 @@
-# Grandfather-Fox
+# Grandfather Fox [<img align="right" src=".github/fxaddon.png">](https://addons.mozilla.org/firefox/addon/grandfather-fox/)
 When you're browsing on Firefox, it's easy to lose track of time. The Grandfather Fox add-on turns your browser into a classic grandfather clock that will chime each hour. It promotes time awareness, while also giving your home office a bit of class.
 
 The add-on currently features a variety of audio packs, including:
@@ -7,8 +7,6 @@ The add-on currently features a variety of audio packs, including:
 * Single beep
 * Multiple progressive beeps
 * Clock tower
-
-**PRODUCT PAGE:** [View Now](https://addons.mozilla.org/firefox/addon/grandfather-fox/)
 
 ## Development
 This repository contains all of the required source code files to make changes to this extension. The "master" branch contains the source code for the latest stable release. If you want to test that version, you can view the release section to download the XPI file or visit the add-on listing on Mozilla.
