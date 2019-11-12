@@ -6,19 +6,21 @@ function load() {
 	var d = new Date();
 	var year = d.getFullYear();
 	var month = d.getMonth();
-	month += 1;
-	var date = d.getDate();
-	var hour = d.getHours();
-	var dateString = year + '-' + month + '-' + date + 'T' + hour + ':00:00';
-	var d = Date.parse(dateString);
-	d += 3600000;
-	browser.alarms.create({when:d,periodInMinutes:60});
+	var day = d.getDate();
+	var hour = d.getHours() + 1;
+	
+	d = new Date(year, month, day, hour);
+	
+	browser.alarms.create('grandfather-fox', {
+		when: d.getTime(),
+		periodInMinutes: 60
+	});
 }
 
-function hourTrigger() {
+function hourTrigger(alarmInfo) {
 	browser.storage.local.get('chime', (res) => {
 		var chimeName = res.chime;
-		var d = new Date();
+		var d = new Date(alarmInfo.scheduledTime);
 		var hour = d.getHours();
 		if (hour > 12) {
 			hour = hour - 12;
