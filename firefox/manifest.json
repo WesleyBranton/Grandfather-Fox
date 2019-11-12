@@ -1,32 +1,32 @@
 {
-	"manifest_version": 2,
-	"name": "Grandfather Fox",
-	"version": "1.4",
-	"description": "Turn Firefox into a grandfather clock that plays a tune at the top of each hour!",
+    "manifest_version": 2,
+    "name": "Grandfather Fox",
+    "version": "1.4",
+    "description": "Turn Firefox into a grandfather clock that plays a tune at the top of each hour!",
 
-	"icons": {
-		"32": "icons/icon-32.png",
-		"48": "icons/icon-48.png",
-		"64": "icons/icon-64.png",
-		"96": "icons/icon-96.png"
-	},
-	
-	"background": {
-		"scripts": [ "background.js" ]
-	},
-	
-	"options_ui": {
-		"page": "options/options.html"
-	},
-	
-	"browser_action": {
-		"default_icon": "icons/icon-animated.gif",
-		"default_title": "Grandfather Fox"
-	},
+    "icons": {
+        "32": "icons/icon-32.png",
+        "48": "icons/icon-48.png",
+        "64": "icons/icon-64.png",
+        "96": "icons/icon-96.png"
+    },
+    
+    "background": {
+        "scripts": [ "background.js" ]
+    },
+    
+    "options_ui": {
+        "page": "options/options.html"
+    },
+    
+    "browser_action": {
+        "default_icon": "icons/icon-animated.gif",
+        "default_title": "Grandfather Fox"
+    },
 
-	"permissions": [
-		"alarms",
-		"storage",
-		"webNavigation"
-	]
+    "permissions": [
+        "alarms",
+        "storage",
+        "webNavigation"
+    ]
 }
