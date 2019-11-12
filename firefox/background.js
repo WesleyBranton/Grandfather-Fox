@@ -44,6 +44,16 @@ function listenMessage(msg) {
 	}
 }
 
+async function alarmCheck() {
+	var alarm = await browser.alarms.get('grandfather-fox');
+	var alarmTime = alarm.scheduledTime;
+	var currentTime = new Date().getTime();
+	
+	if (alarmTime < currentTime) {
+		listenMessage('reload');
+	}
+}
+
 function storageChange(changes) {
 	if (changes.chime) {
 		chimeName = changes.chime.newValue;
@@ -53,6 +63,7 @@ function storageChange(changes) {
 async function firstLoad() {
 	var setting = await browser.storage.local.get('chime');
 	chimeName = setting.chime;
+	load();
 }
 
 var chimeName;
@@ -61,4 +72,4 @@ browser.runtime.onInstalled.addListener(handleInstalled);
 browser.alarms.onAlarm.addListener(hourTrigger);
 chrome.runtime.onMessage.addListener(listenMessage);
 browser.storage.onChanged.addListener(storageChange);
-load();
+browser.webNavigation.onCompleted.addListener(alarmCheck);
