@@ -18,6 +18,12 @@ To develop and test the extension, you need to open the "about:debugging" page i
 Further documentation about developing Firefox extensions can be found [here](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension).
 
 ## Release Notes
+### Version 1.5
+* **[NEW]** Chime can now be stopped (issue #3)
+* **[NEW]** Added toolbar icon
+* **[FIXED]** Issue with chime not activating (issue #4)
+* **[FIXED]** Various code optimizations to improve performance
+
 ### Version 1.4
 * **[NEW]** Added "Fix Timing" button to the add-on options
 * **[FIXED]** Removed unnecessary developer code

@@ -3,16 +3,16 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 fieldset {
-	border: 2px solid #0996f8;
-	border-radius: 5px;
+    border: 2px solid #0996F8;
+    border-radius: 5px;
 }
 
 legend {
-	background-color: #0996f8;
-	color: white;
-	border-radius: 3px;
+    background: #0996F8;
+    color: white;
+    border-radius: 3px;
 }
 
 #reload {
-	float: right;
+    float: right;
 }

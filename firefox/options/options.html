@@ -4,42 +4,42 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<link rel="stylesheet" href="theme.css"/>
-	</head>
-	<body>
-		<form>
-			<fieldset>
-				<legend>Add-on Settings</legend>
-				<label>Chime Noise: </label>
-				<select id="chimeNoise">
-					<option value="tower">Clock Tower</option>
-					<option value="cuckoo">Cuckoo Clock</option>
-					<option value="default" selected>Grandfather Clock (Default)</option>
-					<option value="multibeep">Multiple Beeps</option>
-					<option value="singlebeep">Single Beep</option>
-				</select>
-				<button id="sample" type="button">Sample Audio</button>
-			</fieldset><br>
-			Do you notice the chimes playing too early or too late? Do they not play at all? Did you recently change your computer's time settings? Press the <i>Fix Timing</i> button to fix issues with the timing function.<br>
-			<button id="reload" type="button">Fix Timing</button>
-			<audio id="tower">
-				<source src="../audio/tower/3.ogg" type="audio/ogg">
-			</audio>
-			<audio id="cuckoo">
-				<source src="../audio/cuckoo/3.ogg" type="audio/ogg">
-			</audio>
-			<audio id="default">
-				<source src="../audio/default/3.ogg" type="audio/ogg">
-			</audio>
-			<audio id="multibeep">
-				<source src="../audio/multibeep/3.ogg" type="audio/ogg">
-			</audio>
-			<audio id="singlebeep">
-				<source src="../audio/singlebeep/3.ogg" type="audio/ogg">
-			</audio>
-		</form>
-		<script src="options.js"></script>
-	</body>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="theme.css">
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Add-on Settings</legend>
+                <label>Chime Noise: </label>
+                <select id="chimeNoise">
+                    <option value="tower">Clock Tower</option>
+                    <option value="cuckoo">Cuckoo Clock</option>
+                    <option value="default" selected>Grandfather Clock (Default)</option>
+                    <option value="multibeep">Multiple Beeps</option>
+                    <option value="singlebeep">Single Beep</option>
+                </select>
+                <button id="sample" type="button">Sample Audio</button>
+            </fieldset><br>
+            Do you notice the chimes playing too early or too late? Do they not play at all? Did you recently change your computer's time settings? Press the <i>Fix Timing</i> button to fix issues with the timing function.<br>
+            <button id="reload" type="button">Fix Timing</button>
+            <audio id="tower">
+                <source src="../audio/tower/3.ogg" type="audio/ogg">
+            </audio>
+            <audio id="cuckoo">
+                <source src="../audio/cuckoo/3.ogg" type="audio/ogg">
+            </audio>
+            <audio id="default">
+                <source src="../audio/default/3.ogg" type="audio/ogg">
+            </audio>
+            <audio id="multibeep">
+                <source src="../audio/multibeep/3.ogg" type="audio/ogg">
+            </audio>
+            <audio id="singlebeep">
+                <source src="../audio/singlebeep/3.ogg" type="audio/ogg">
+            </audio>
+        </form>
+        <script src="options.js"></script>
+    </body>
 </html>
