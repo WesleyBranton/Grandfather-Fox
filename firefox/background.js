@@ -25,7 +25,10 @@ function hourTrigger(alarmInfo) {
 	} else if (hour == 0) {
 		hour = 12;
 	}
-	var audio = new Audio('audio/' + chimeName + '/' + hour + '.ogg');
+	audio = new Audio('audio/' + chimeName + '/' + hour + '.ogg');
+	audio.addEventListener("ended", audioEnded);
+	audio.addEventListener("pause", audioEnded);
+	audio.addEventListener("play", audioStarted);
 	audio.play();
 }
 
@@ -66,10 +69,29 @@ async function firstLoad() {
 	load();
 }
 
-var chimeName;
+function audioStarted() {
+	browser.browserAction.setTitle({title: "Click to stop Grandfather Fox chime..."});
+	browser.browserAction.setBadgeText({text: "\u25B6"});
+}
+
+function audioEnded() {
+	browser.browserAction.setTitle({title: "Grandfather Fox"});
+	browser.browserAction.setBadgeText({text: ""});
+}
+
+function stopAudio() {
+	if (audio) {
+		audio.pause();
+	}
+}
+
+var chimeName, audio;
 firstLoad();
 browser.runtime.onInstalled.addListener(handleInstalled);
 browser.alarms.onAlarm.addListener(hourTrigger);
 chrome.runtime.onMessage.addListener(listenMessage);
 browser.storage.onChanged.addListener(storageChange);
 browser.webNavigation.onCompleted.addListener(alarmCheck);
+browser.browserAction.onClicked.addListener(stopAudio);
+browser.browserAction.setBadgeBackgroundColor({color: "#3C3"});
+browser.browserAction.setBadgeTextColor({color: "white"});

@@ -18,6 +18,11 @@
 	"options_ui": {
 		"page": "options/options.html"
 	},
+	
+	"browser_action": {
+		"default_icon": "icons/icon-animated.gif",
+		"default_title": "Grandfather Fox"
+	},
 
 	"permissions": [
 		"alarms",
