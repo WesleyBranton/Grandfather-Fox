@@ -18,25 +18,10 @@ function restoreOptions() {
 
 // Play audio sample
 function playAudio() {
-    var sound = document.getElementById('tower');
-    sound.pause();
-    sound.currentTime = 0;
-    sound = document.getElementById('cuckoo');
-    sound.pause();
-    sound.currentTime = 0;
-    sound = document.getElementById('default');
-    sound.pause();
-    sound.currentTime = 0;
-    sound = document.getElementById('multibeep');
-    sound.pause();
-    sound.currentTime = 0;
-    sound = document.getElementById('singlebeep');
-    sound.pause();
-    sound.currentTime = 0;
-    
+    audio.pause();
     var audioType = document.getElementById('chimeNoise').value;
-    var x = document.getElementById(audioType);
-    x.play();
+    audio = new Audio('../audio/' + audioType + '/3.ogg');
+    audio.play();
 }
 
 // Reload the alarm
@@ -47,4 +32,4 @@ function reload() {
 restoreOptions();
 document.getElementsByTagName('form')[0].addEventListener('change', saveOptions);
 document.getElementById('sample').addEventListener('click',playAudio);
-document.getElementById('reload').addEventListener('click',reload);
+document.getElementById('reload').addEventListener('click',reload);var audio = new Audio();
