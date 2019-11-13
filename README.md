@@ -18,30 +18,34 @@ To develop and test the extension, you need to open the "about:debugging" page i
 Further documentation about developing Firefox extensions can be found [here](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension).
 
 ## Release Notes
+### Version 1.6
+**[NEW]** Added ability to adjust chime volume (issue #6)
+**[FIXED]** Improved invalid alarm detection to reset an alarm that's set too far into the future (issue #7)
+
 ### Version 1.5
-* **[NEW]** Chime can now be stopped (issue #3)
-* **[NEW]** Added toolbar icon
-* **[FIXED]** Issue with chime not activating (issue #4)
-* **[FIXED]** Various code optimizations to improve performance
+**[NEW]** Chime can now be stopped (issue #3)
+**[NEW]** Added toolbar icon
+**[FIXED]** Issue with chime not activating (issue #4)
+**[FIXED]** Various code optimizations to improve performance
 
 ### Version 1.4
-* **[NEW]** Added "Fix Timing" button to the add-on options
-* **[FIXED]** Removed unnecessary developer code
+**[NEW]** Added "Fix Timing" button to the add-on options
+**[FIXED]** Removed unnecessary developer code
 
 ### Version 1.3.1
-* **[FIXED]** Chime is no longer 1 hour behind
+**[FIXED]** Chime is no longer 1 hour behind
 
 ### Version 1.3
-* **[NEW]** Changed to the more stable and reliable Javascript Alarm API
-* **[FIXED]** Repaired issues with add-on not working after a period of time
+**[NEW]** Changed to the more stable and reliable Javascript Alarm API
+**[FIXED]** Repaired issues with add-on not working after a period of time
 
 ### Version 1.2.1
-* **[FIXED]** Removed unnecessary developer testing code
+**[FIXED]** Removed unnecessary developer testing code
 
 ### Version 1.2
-* **[FIXED]** Default settings not loading on first install
-* **[FIXED]** Timing system not firing when computer is put in sleep mode
-* **[FIXED]** Improved timing system reliability
+**[FIXED]** Default settings not loading on first install
+**[FIXED]** Timing system not firing when computer is put in sleep mode
+**[FIXED]** Improved timing system reliability
 
 ### Version 1.1
-* **[NEW]** Added audio sample button to the add-on options
+**[NEW]** Added audio sample button to the add-on options
