@@ -49,7 +49,7 @@ async function alarmCheck() {
     var alarmTime = alarm.scheduledTime;
     var currentTime = new Date().getTime();
     
-    if (alarmTime < currentTime) {
+    if (alarmTime < currentTime || (alarmTime - currentTime) > 3600000) {
         listenMessage('reload');
     }
 }
