@@ -16,3 +16,7 @@ legend {
 #reload {
     float: right;
 }
+
+.hide {
+    display: none !important;
+}

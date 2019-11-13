@@ -5,7 +5,25 @@
 // Get chime from settings on startup
 async function firstLoad() {
     var setting = await browser.storage.local.get('chime');
-    chimeName = setting.chime;
+    if (setting.chime) {
+        chimeName = setting.chime;
+    } else {
+        chimeName = 'default';
+        browser.storage.local.set({
+            chime: 'default'
+        });
+    }
+    
+    setting = await browser.storage.local.get('volume');
+    if (setting.volume) {
+        chimeVolume = setting.volume;
+    } else {
+        chimeVolume = 1;
+        browser.storage.local.set({
+            'volume': 1
+        });
+    }
+    
     load();
 }
 
@@ -60,6 +78,7 @@ function hourTrigger(alarmInfo) {
     audio.addEventListener('ended', audioEnded);
     audio.addEventListener('pause', audioEnded);
     audio.addEventListener('play', audioStarted);
+    audio.volume = chimeVolume;
     audio.play();
 }
 
@@ -95,9 +114,14 @@ function storageChange(changes) {
     if (changes.chime) {
         chimeName = changes.chime.newValue;
     }
+    
+    if (changes.volume) {
+        chimeVolume = changes.volume.newValue;
+        audio.volume = chimeVolume;
+    }
 }
 
-var chimeName, audio;
+var chimeName, chimeVolume, audio;
 firstLoad();
 browser.runtime.onInstalled.addListener(handleInstalled);
 browser.alarms.onAlarm.addListener(hourTrigger);
