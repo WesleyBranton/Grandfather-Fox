@@ -27,15 +27,6 @@ async function firstLoad() {
     load();
 }
 
-// Set default
-function handleInstalled(details) {
-    if (details.reason == 'install') {
-        browser.storage.local.set({
-            chime: 'default'
-        });
-    }
-}
-
 // Create alarm
 function load() {
     var d = new Date();
