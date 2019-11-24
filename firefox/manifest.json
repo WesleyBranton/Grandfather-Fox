@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Grandfather Fox",
-    "version": "1.6",
+    "version": "1.6.1",
     "description": "Turn Firefox into a grandfather clock that plays a tune at the top of each hour!",
 
     "icons": {
