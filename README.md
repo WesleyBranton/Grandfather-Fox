@@ -18,6 +18,9 @@ To develop and test the extension, you need to open the "about:debugging" page i
 Further documentation about developing Firefox extensions can be found [here](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension).
 
 ## Release Notes
+### Version 1.6.1
+* **[CHANGE]** Overhauled options UI
+
 ### Version 1.6
 **[NEW]** Added ability to adjust chime volume (issue #6)
 **[FIXED]** Improved invalid alarm detection to reset an alarm that's set too far into the future (issue #7)
