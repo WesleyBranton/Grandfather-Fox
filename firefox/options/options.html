@@ -6,30 +6,38 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="theme.css">
+        <link rel="stylesheet" href="../lib/preferences/style.css">
     </head>
     <body>
-        <fieldset>
-            <legend>Add-on Settings</legend>
-            <label for="chimeVolume">Chime Volume: </label>
-            <label id="volumeOutput">100%</label>
-            <button id="volumeSave" class="hide">Save</button>
-            <br>
-            <input type="range" min="1" max="100" value="100" id="chimeVolume">
-            <br>
-            <label for="chimeNoise">Chime Noise: </label>
-            <br>
-            <select id="chimeNoise">
-                <option value="tower">Clock Tower</option>
-                <option value="cuckoo">Cuckoo Clock</option>
-                <option value="default" selected>Grandfather Clock (Default)</option>
-                <option value="multibeep">Multiple Beeps</option>
-                <option value="singlebeep">Single Beep</option>
-            </select>
-            <button id="sample">Sample Audio</button>
-        </fieldset><br>
-        Do you notice the chimes playing too early or too late? Do they not play at all? Did you recently change your computer's time settings? Press the <i>Fix Timing</i> button to fix issues with the timing function.<br>
-        <button id="reload" type="button">Fix Timing</button>
+        <form name="settings">
+            <section class="panel-section">
+                <label>Chime volume (<label id="volumeOutput">100%</label>)</label>
+                <div>
+                    <input type="range" min="1" max="100" value="100" name="volume" id="chimeVolume">
+                </div>
+            </section>
+            <section class="panel-section">
+                <label>Chime sound</label>
+                <select id="chimeNoise" name="noise">
+                    <option value="tower">Clock Tower</option>
+                    <option value="cuckoo">Cuckoo Clock</option>
+                    <option value="default">Grandfather Clock</option>
+                    <option value="multibeep">Multiple Beeps</option>
+                    <option value="singlebeep">Single Beep</option>
+                </select>
+            </section>
+            <section class="panel-section">
+                <label>Preview chime</label>
+                <button type="button" id="sample" class="button default">Listen</button>
+            </section>
+            <section class="panel-section has-help">
+                <label>Fix timing</label>
+                <button type="button" id="reload" class="button secondary">Fix</button>
+            </section>
+            <section class="panel-section help-row">
+                Use if the chime is not playing or is playing at the wrong time
+            </section>
+        </form>
         <script src="options.js"></script>
     </body>
 </html>
