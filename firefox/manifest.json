@@ -16,8 +16,7 @@
     },
     
     "options_ui": {
-        "page": "options/options.html",
-        "browser_style": false
+        "page": "options/options.html"
     },
     
     "browser_action": {
