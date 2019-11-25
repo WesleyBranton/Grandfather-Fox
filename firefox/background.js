@@ -108,13 +108,14 @@ function storageChange(changes) {
     
     if (changes.volume) {
         chimeVolume = changes.volume.newValue;
-        audio.volume = chimeVolume;
+        if (audio) {
+            audio.volume = chimeVolume;
+        }
     }
 }
 
 var chimeName, chimeVolume, audio;
 firstLoad();
-browser.runtime.onInstalled.addListener(handleInstalled);
 browser.alarms.onAlarm.addListener(hourTrigger);
 chrome.runtime.onMessage.addListener(listenMessage);
 browser.storage.onChanged.addListener(storageChange);
