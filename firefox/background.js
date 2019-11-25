@@ -108,7 +108,9 @@ function storageChange(changes) {
     
     if (changes.volume) {
         chimeVolume = changes.volume.newValue;
-        audio.volume = chimeVolume;
+        if (audio) {
+            audio.volume = chimeVolume;
+        }
     }
 }
 
