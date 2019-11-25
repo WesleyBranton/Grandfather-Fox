@@ -116,7 +116,6 @@ function storageChange(changes) {
 
 var chimeName, chimeVolume, audio;
 firstLoad();
-browser.runtime.onInstalled.addListener(handleInstalled);
 browser.alarms.onAlarm.addListener(hourTrigger);
 chrome.runtime.onMessage.addListener(listenMessage);
 browser.storage.onChanged.addListener(storageChange);
