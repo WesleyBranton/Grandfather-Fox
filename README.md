@@ -18,6 +18,11 @@ To develop and test the extension, you need to open the "about:debugging" page i
 Further documentation about developing Firefox extensions can be found [here](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension).
 
 ## Release Notes
+### Version 1.6.2
+* **[FIXED]** Issue with options UI appearance
+* **[FIXED]** Error when changing settings
+* **[FIXED]** Error when installing add-on for the first time
+
 ### Version 1.6.1
 * **[CHANGE]** Overhauled options UI
 
