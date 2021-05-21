@@ -2,23 +2,66 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-fieldset {
-    border: 2px solid #963;
-    border-radius: 5px;
+#customChime > div {
+    display: flex;
 }
 
-legend {
-    background: #963;
-    color: white;
-    border-radius: 3px;
-    padding: 10px 15px;
-    font-weight: bold;
+#customChime > div > span:first-of-type {
+    flex: 1;
 }
 
-#reload {
-    float: right;
+#custom-chime-section > .help-row > label {
+    margin-left: 1em;
 }
 
 .hide {
     display: none !important;
+}
+
+.error {
+    color: red;
+}
+
+.loader {
+    border: 0.4em solid transparent;
+    border-radius: 50%;
+    border-top: 0.4em solid var(--blue-60);
+    width: 2em;
+    height: 2em;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#dialog-overlay {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#dialog {
+    background: white;
+    margin: auto;
+    width: max-content;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--grey-90-a20);
+    box-shadow: 5px 5px 5px var(--grey-90-a20);
+    border-radius: 5px;
+}
+
+#dialog > label {
+    flex: 1;
+    font-size: 2em;
+    margin-left: 1em;
 }
