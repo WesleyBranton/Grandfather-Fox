@@ -315,7 +315,6 @@ function toggleCustomWarning() {
 // Place holder functions
 function onSuccess(message) {}
 function onFailed(message) {}
-function onPreviewOver() {}
 
 const port = browser.runtime.connect({name: Date.now() + ''});
 port.onMessage.addListener(processMessage);
