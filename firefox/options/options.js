@@ -42,17 +42,6 @@ async function restoreOptions() {
 }
 
 /**
- * Play preset audio sample
- */
-function playAudio() {
-    audio.pause();
-    var audioType = chimeNoise.value;
-    audio = new Audio('../audio/' + audioType + '/3.ogg');
-    audio.volume = chimeVolume;
-    audio.play();
-}
-
-/**
  * Reload the alarm
  */
 function reload() {
@@ -71,14 +60,11 @@ function updateVolumeOutput() {
  */
 function toggleCustomAudio() {
     const customChimeSection = document.getElementById('custom-chime-section');
-    const noCustomChimeSection = document.getElementById('no-custom-chime-section');
 
     if (chimeNoise.value == 'custom') {
         customChimeSection.classList.remove('hide');
-        noCustomChimeSection.classList.add('hide');
     } else {
         customChimeSection.classList.add('hide');
-        noCustomChimeSection.classList.remove('hide');
     }
 }
 
@@ -110,9 +96,6 @@ function updateCustomChimeUI(hour, hasAudio) {
     button.classList.remove((hasAudio) ? 'default' : 'secondary');
     button.classList.add((hasAudio) ? 'secondary' : 'default');
 
-    const previewButton = document.getElementById('listen-custom-' + hour);
-    previewButton.disabled = !hasAudio;
-
     hoursWithChime[hour] = hasAudio;
     selectedHour = null;
     toggleCustomWarning();
@@ -123,9 +106,11 @@ function updateCustomChimeUI(hour, hasAudio) {
  */
 function removeChime() {
     toggleDialog(true);
-    
-    audio.pause();
-    onPreviewOver();
+
+    if (isAudioPlaying() && parseInt(document.settings.selectedNoise.value) == selectedHour) {
+        audio.pause();
+        isAudioPlaying();
+    }
 
     onSuccess = (message) => {
         updateCustomChimeUI(selectedHour, false);
@@ -175,36 +160,66 @@ function addChime() {
 }
 
 /**
+ * Play preset audio sample
+ */
+ function playAudio() {
+    const isPlaying = isAudioPlaying();
+
+    audio.pause();
+    isAudioPlaying();
+
+    if (isPlaying) {
+        return;
+    }
+
+    if (chimeNoise.value == 'custom') {
+        previewChime();
+    } else {
+        audio.pause();
+        audio = new Audio(`../audio/${chimeNoise.value}/${document.settings.selectedNoise.value}.ogg`);
+        audio.addEventListener('ended', isAudioPlaying);
+        audio.volume = chimeVolume;
+        audio.play();
+        isAudioPlaying();
+    }
+}
+
+/**
+ * Check if audio is playing and update the UI accordingly
+ * @returns isPlaying
+ */
+function isAudioPlaying() {
+    if (audio.paused) {
+        previewButton.classList.remove('playing');
+        previewButton.textContent = 'Listen';
+    } else {
+        previewButton.classList.add('playing');
+        previewButton.textContent = 'Stop';
+    }
+
+    previewHour.disabled = !audio.paused;
+
+    return !audio.paused;
+}
+
+/**
  * Toggle preview for a custom chime
  * @param {Event} event
  */
-function previewChime(event) {
+function previewChime() {
     toggleDialog(true);
 
-    const button = event.target;
-    const hour = button.id.split('-')[2];
-    const isPlaying = button.classList.contains('playing');
-    
-    audio.pause();
-    onPreviewOver();
-
-    if (isPlaying) {
+    if (isAudioPlaying()) {
         toggleDialog(false);
         return;
     }
 
-    onPreviewOver = () => {
-        button.classList.remove('playing');
-        button.textContent = 'Listen';
-    };
-
     onSuccess = (message) => {
         audio = new Audio(URL.createObjectURL(message.file));
-        audio.addEventListener('ended', onPreviewOver);
+        audio.addEventListener('ended', isAudioPlaying);
         audio.volume = chimeVolume;
         audio.play();
-        button.classList.add('playing');
-        button.textContent = 'Stop';
+        isAudioPlaying();
     };
 
     onFailed = (message) => {
@@ -213,7 +228,7 @@ function previewChime(event) {
 
     port.postMessage({
         command: 'load',
-        filename: 'chime_' + hour
+        filename: 'chime_' + document.settings.selectedNoise.value
     });
 }
 
@@ -308,6 +323,8 @@ port.onMessage.addListener(processMessage);
 var chimeNoise = document.getElementById('chimeNoise');
 var volumeOutput = document.getElementById('volumeOutput');
 var volumeSlider = document.getElementById('chimeVolume');
+var previewButton = document.getElementById('sample');
+var previewHour = document.getElementById('sample-selection');
 var audio = new Audio();
 var chimeVolume = 1;
 let selectedHour = null;
@@ -315,7 +332,7 @@ let hoursWithChime = [0, false, false, false, false, false, false, false, false,
 
 restoreOptions();
 
-document.getElementById('sample').addEventListener('click', playAudio);
+previewButton.addEventListener('click', playAudio);
 document.getElementById('reload').addEventListener('click', reload);
 volumeSlider.addEventListener('input', updateVolumeOutput);
 document.settings.addEventListener('change', saveOptions);
@@ -324,5 +341,4 @@ chimeNoise.addEventListener('change', toggleCustomAudio);
 
 for (let i = 1; i <= 12; i++) {
     document.getElementById('custom-' + i).addEventListener('click', triggerChimeUpdate);
-    document.getElementById('listen-custom-' + i).addEventListener('click', previewChime);
 }
