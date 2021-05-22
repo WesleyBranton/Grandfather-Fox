@@ -30,11 +30,27 @@
                     <option value="custom">Custom</option>
                 </select>
             </section>
-            <div id="no-custom-chime-section">
+            <div>
                 <div class="panel-section-separator"></div>
                 <section class="panel-section">
                     <label>Preview chime</label>
-                    <button type="button" id="sample" class="button default">Listen</button>
+                    <div>
+                        <select id="sample-selection" name="selectedNoise">
+                            <option value="1">Hour 1</option>
+                            <option value="2">Hour 2</option>
+                            <option value="3" selected>Hour 3</option>
+                            <option value="4">Hour 4</option>
+                            <option value="5">Hour 5</option>
+                            <option value="6">Hour 6</option>
+                            <option value="7">Hour 7</option>
+                            <option value="8">Hour 8</option>
+                            <option value="9">Hour 9</option>
+                            <option value="10">Hour 10</option>
+                            <option value="11">Hour 11</option>
+                            <option value="12">Hour 12</option>
+                        </select>
+                        <button type="button" id="sample" class="button default">Listen</button>
+                    </div>
                 </section>
             </div>
             <div id="custom-chime-section" class="hide">
@@ -44,87 +60,51 @@
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 1</label>
-                    <div>
-                        <button id="custom-1" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-1" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-1" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 2</label>
-                    <div>
-                        <button id="custom-2" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-2" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-2" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 3</label>
-                    <div>
-                        <button id="custom-3" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-3" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-3" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 4</label>
-                    <div>
-                        <button id="custom-4" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-4" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-4" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 5</label>
-                    <div>
-                        <button id="custom-5" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-5" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-5" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 6</label>
-                    <div>
-                        <button id="custom-6" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-6" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-6" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 7</label>
-                    <div>
-                        <button id="custom-7" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-7" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-7" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 8</label>
-                    <div>
-                        <button id="custom-8" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-8" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-8" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 9</label>
-                    <div>
-                        <button id="custom-9" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-9" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-9" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 10</label>
-                    <div>
-                        <button id="custom-10" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-10" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-10" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row has-help">
                     <label>Hour 11</label>
-                    <div>
-                        <button id="custom-11" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-11" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-11" type="button" class="button default">Add...</button>
                 </section>
                 <section class="panel-section help-row">
                     <label>Hour 12</label>
-                    <div>
-                        <button id="custom-12" type="button" class="button default">Add...</button>
-                        <button id="listen-custom-12" type="button" class="button default" disabled>Listen</button>
-                    </div>
+                    <button id="custom-12" type="button" class="button default">Add...</button>
                 </section>
                 <section id="chimes-not-set" class="panel-section help-row hide">
                     <span class="error">Some custom chimes have not been set. No chime will play on those hours.</span>
