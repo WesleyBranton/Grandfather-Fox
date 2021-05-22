@@ -12,7 +12,7 @@
     },
     
     "background": {
-        "scripts": [ "background.js" ]
+        "scripts": [ "lib/idb-file-storage.js", "background.js" ]
     },
     
     "options_ui": {
@@ -27,6 +27,7 @@
     "permissions": [
         "alarms",
         "storage",
-        "webNavigation"
+        "webNavigation",
+        "unlimitedStorage"
     ]
 }

@@ -5,8 +5,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Grandfather Fox Options</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../lib/new_browser_style.css">
+        <link rel="stylesheet" href="theme.css">
     </head>
     <body class="browser-style">
         <form name="settings">
@@ -25,13 +27,109 @@
                     <option value="default">Grandfather Clock</option>
                     <option value="multibeep">Multiple Beeps</option>
                     <option value="singlebeep">Single Beep</option>
+                    <option value="custom">Custom</option>
                 </select>
             </section>
-            <div class="panel-section-separator"></div>
-            <section class="panel-section">
-                <label>Preview chime</label>
-                <button type="button" id="sample" class="button default">Listen</button>
-            </section>
+            <div id="no-custom-chime-section">
+                <div class="panel-section-separator"></div>
+                <section class="panel-section">
+                    <label>Preview chime</label>
+                    <button type="button" id="sample" class="button default">Listen</button>
+                </section>
+            </div>
+            <div id="custom-chime-section" class="hide">
+                <div class="panel-section-separator"></div>
+                <section class="panel-section has-help">
+                    <label>Custom chimes</label>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 1</label>
+                    <div>
+                        <button id="custom-1" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-1" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 2</label>
+                    <div>
+                        <button id="custom-2" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-2" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 3</label>
+                    <div>
+                        <button id="custom-3" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-3" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 4</label>
+                    <div>
+                        <button id="custom-4" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-4" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 5</label>
+                    <div>
+                        <button id="custom-5" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-5" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 6</label>
+                    <div>
+                        <button id="custom-6" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-6" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 7</label>
+                    <div>
+                        <button id="custom-7" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-7" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 8</label>
+                    <div>
+                        <button id="custom-8" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-8" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 9</label>
+                    <div>
+                        <button id="custom-9" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-9" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 10</label>
+                    <div>
+                        <button id="custom-10" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-10" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row has-help">
+                    <label>Hour 11</label>
+                    <div>
+                        <button id="custom-11" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-11" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section class="panel-section help-row">
+                    <label>Hour 12</label>
+                    <div>
+                        <button id="custom-12" type="button" class="button default">Add...</button>
+                        <button id="listen-custom-12" type="button" class="button default" disabled>Listen</button>
+                    </div>
+                </section>
+                <section id="chimes-not-set" class="panel-section help-row hide">
+                    <span class="error">Some custom chimes have not been set. No chime will play on those hours.</span>
+                </section>
+            </div>
             <div class="panel-section-separator"></div>
             <section class="panel-section has-help">
                 <label>Fix timing</label>
@@ -40,7 +138,18 @@
             <section class="panel-section help-row">
                 Use if the chime is not playing or is playing at the wrong time
             </section>
+            <section style="display: none !important;">
+                <input type="file" name="customChime" accept="audio/mpeg, audio/ogg, audio/wav">
+            </section>
         </form>
+
+        <div id="dialog-overlay" class="hide">
+            <div id="dialog">
+                <div class="loader"></div>
+                <label>Please wait...</label>
+            </div>
+        </div>
+
         <script src="options.js"></script>
     </body>
 </html>
