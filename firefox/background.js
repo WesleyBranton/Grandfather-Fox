@@ -334,6 +334,21 @@ function handlePortMessage(message, port) {
     }
 }
 
+/**
+ * Handles installation or update
+ * @param {Object} details
+ */
+function handleInstalled(details) {
+    if (details.reason == 'update') {
+        const previousVersion = parseFloat(details.previousVersion);
+        if (previousVersion < 2) {
+            browser.tabs.create({
+                url: 'https://addons.wesleybranton.com/addon/grandfather-fox/update/v2_0'
+            });
+        }
+    }
+}
+
 var chimeName, chimeVolume, audio;
 const ports = {};
 browser.runtime.onConnect.addListener(registerPort);
@@ -345,3 +360,4 @@ browser.webNavigation.onCompleted.addListener(alarmCheck);
 browser.browserAction.onClicked.addListener(stopAudio);
 browser.browserAction.setBadgeBackgroundColor({color: '#3C3'});
 browser.browserAction.setBadgeTextColor({color: 'white'});
+browser.runtime.onInstalled.addListener(handleInstalled);
