@@ -115,7 +115,7 @@ function getCurrentTime(date) {
  */
 function getChimeHour() {
     let time = new Date();
-    time.setMinutes(time.getMinutes() - 15); // Make sure time is previous hour
+    time.setMinutes(time.getMinutes() + 5); // Make sure time is current hour
     time = getCurrentTime(time);
 
     let hour = parseInt(time.split(':')[0]) % 12;
