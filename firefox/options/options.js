@@ -39,6 +39,7 @@ async function restoreOptions() {
     updateVolumeOutput();
     toggleCustomAudio();
     toggleCustomWarning();
+    showCurrentTime(true);
 
     if (chimeNoise.value == 'custom') {
         updateCustomAudioList();

@@ -440,4 +440,28 @@ function refreshTimezoneList() {
     }
 }
 
+/**
+ * Show the date and time of the selected timezone
+ * @param {boolean} once
+ */
+function showCurrentTime(once) {
+    const output = document.getElementById('current-time');
+
+    if (document.settings.timezone.value == 'auto') {
+        output.textContent = new Date().toLocaleString();
+    } else {
+        output.textContent = new Date().toLocaleString("en-US", {
+            timeZone: document.settings.timezone.value
+        });
+    }
+
+    if (!once) { // Update in 1 second
+        setTimeout(() => {
+            showCurrentTime(false);
+        }, 1000);
+    }
+}
+
 refreshTimezoneList();
+showCurrentTime(false);
+document.settings.timezone.addEventListener('change', () => { showCurrentTime(true); });
