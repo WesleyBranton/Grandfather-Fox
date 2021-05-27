@@ -2,11 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-
-body {
-    background: transparent;
-}
- 
 #customChime > div {
     display: flex;
 }
@@ -24,7 +19,7 @@ body {
 }
 
 .error {
-    color: red;
+    color: var(--red-60);
 }
 
 .loader {
@@ -52,7 +47,7 @@ body {
 }
 
 #dialog {
-    background: white;
+    background: var(--container-background);
     margin: auto;
     width: max-content;
     padding: 1em 2em;
@@ -60,8 +55,8 @@ body {
     max-width: 500px;
     display: flex;
     align-items: center;
-    border: 1px solid var(--grey-90-a20);
-    box-shadow: 5px 5px 5px var(--grey-90-a20);
+    border: 1px solid var(--border-color);
+    box-shadow: 5px 5px 5px var(--border-color);
     border-radius: 5px;
 }
 
