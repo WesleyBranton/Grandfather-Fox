@@ -23,22 +23,24 @@ async function firstLoad() {
             'volume': 1
         });
     }
+
+    setting = await browser.storage.local.get('timezone');
+    if (setting.timezone) {
+        timezone = setting.timezone;
+    } else {
+        timezone = 'auto';
+        browser.storage.local.set({
+            timezone: 'auto'
+        });
+    }
     
     load();
 }
 
 // Create alarm
 function load() {
-    var d = new Date();
-    var year = d.getFullYear();
-    var month = d.getMonth();
-    var day = d.getDate();
-    var hour = d.getHours() + 1;
-    
-    d = new Date(year, month, day, hour);
-    
     browser.alarms.create('grandfather-fox', {
-        when: d.getTime(),
+        when: getNextTime().getTime(),
         periodInMinutes: 60
     });
 }
@@ -56,14 +58,7 @@ async function alarmCheck() {
 
 // Play chime
 function hourTrigger(alarmInfo) {
-    var d = new Date(alarmInfo.scheduledTime);
-    var hour = d.getHours();
-    
-    if (hour > 12) {
-        hour = hour - 12;
-    } else if (hour == 0) {
-        hour = 12;
-    }
+    const hour = getChimeHour();
 
     if (chimeName == 'custom') {
         try {
@@ -93,6 +88,60 @@ function hourTrigger(alarmInfo) {
         audio.volume = chimeVolume;
         audio.play();
     }
+}
+
+/**
+ * Get current timezone-specific time
+ * @param {Date} date
+ * @returns Time
+ */
+function getCurrentTime(date) {
+    let time;
+
+    if (timezone == 'auto') {
+        time = date.toLocaleTimeString("en-US");
+    } else {
+        time = date.toLocaleTimeString("en-US", {
+            timeZone: timezone
+        });
+    }
+
+    return time;
+}
+
+/**
+ * Gets hour to play
+ * @returns Hour
+ */
+function getChimeHour() {
+    let time = new Date();
+    time.setMinutes(time.getMinutes() - 15); // Make sure time is previous hour
+    time = getCurrentTime(time);
+
+    let hour = parseInt(time.split(':')[0]) % 12;
+    if (hour == 0) hour = 12;
+
+    return hour;
+}
+
+/**
+ * Gets the next time the chime should play
+ * @returns Date
+ */
+function getNextTime() {
+    let date = new Date();
+    let time = getCurrentTime(date).split(':');
+    let currentMinute = parseInt(time[1]);
+    let currentSecond = parseInt(time[2].split(' ')[0]);
+
+    const offsetSeconds = 60 - currentSecond;
+    const offsetMinutes = 60 - (currentMinute + 1);
+
+    date.setMilliseconds(0);
+    date.setSeconds(date.getSeconds() + offsetSeconds);
+    date.setMinutes(date.getMinutes() + offsetMinutes);
+
+    return date;
 }
 
 // Audio is playing
@@ -133,6 +182,11 @@ function storageChange(changes) {
         if (audio) {
             audio.volume = chimeVolume;
         }
+    }
+
+    if (changes.timezone) {
+        timezone = changes.timezone.newValue;
+        listenMessage('reload');
     }
 }
 
@@ -349,7 +403,7 @@ function handleInstalled(details) {
     }
 }
 
-var chimeName, chimeVolume, audio;
+var chimeName, chimeVolume, audio, timezone;
 const ports = {};
 browser.runtime.onConnect.addListener(registerPort);
 firstLoad();

@@ -111,6 +111,13 @@
                 </section>
             </div>
             <div class="panel-section-separator"></div>
+            <section class="panel-section">
+                <label>Timezone</label>
+                <select id="timezone" name="timezone">
+                    <!-- Populated by timezoneManager.js -->
+                </select>
+            </section>
+            <div class="panel-section-separator"></div>
             <section class="panel-section has-help">
                 <label>Fix timing</label>
                 <button type="button" id="reload" class="button secondary">Fix</button>
@@ -130,6 +137,7 @@
             </div>
         </div>
 
+        <script src="timezoneManager.js"></script>
         <script src="options.js"></script>
     </body>
 </html>
