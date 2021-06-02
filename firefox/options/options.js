@@ -16,6 +16,10 @@ function saveOptions() {
     browser.storage.local.set({
         'volume': chimeVolume
     });
+
+    browser.storage.local.set({
+        timezone: document.settings.timezone.value
+    });
 }
 
 /**
@@ -28,9 +32,14 @@ async function restoreOptions() {
     setting = await browser.storage.local.get('volume');
     chimeVolume = setting.volume;
     volumeSlider.value = chimeVolume * 100;
+
+    setting = await browser.storage.local.get('timezone');
+    document.settings.timezone.value = (setting.timezone) ? setting.timezone : 'auto';
+
     updateVolumeOutput();
     toggleCustomAudio();
     toggleCustomWarning();
+    showCurrentTime(true);
 
     if (chimeNoise.value == 'custom') {
         updateCustomAudioList();

@@ -112,6 +112,20 @@
             </div>
             <div class="panel-section-separator"></div>
             <section class="panel-section has-help">
+                <label>Timezone</label>
+                <div>
+                    (<a href="https://github.com/WesleyBranton/Grandfather-Fox/wiki/Wrong-hour-chime-played" target="_blank" class="internal">?</a>)
+                    <select id="timezone" name="timezone">
+                        <!-- Populated by timezoneManager.js -->
+                    </select>
+                </div>
+            </section>
+            <section class="panel-section help-row">
+                <span></span>
+                <span id="current-time">Unknown</span>
+            </section>
+            <div class="panel-section-separator"></div>
+            <section class="panel-section has-help">
                 <label>Fix timing</label>
                 <button type="button" id="reload" class="button secondary">Fix</button>
             </section>
@@ -130,6 +144,7 @@
             </div>
         </div>
 
+        <script src="timezoneManager.js"></script>
         <script src="options.js"></script>
     </body>
 </html>
