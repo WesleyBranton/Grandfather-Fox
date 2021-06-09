@@ -51,13 +51,6 @@ async function restoreOptions() {
 }
 
 /**
- * Reload the alarm
- */
-function reload() {
-    chrome.runtime.sendMessage('reload');
-}
-
-/**
  * Update volume output percentage label
  */
 function updateVolumeOutput() {
@@ -341,7 +334,6 @@ let hoursWithChime = [0, false, false, false, false, false, false, false, false,
 restoreOptions();
 
 previewButton.addEventListener('click', playAudio);
-document.getElementById('reload').addEventListener('click', reload);
 volumeSlider.addEventListener('input', updateVolumeOutput);
 document.settings.addEventListener('change', saveOptions);
 document.getElementsByName('customChime')[0].addEventListener('change', addChime);

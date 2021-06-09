@@ -52,7 +52,7 @@ async function alarmCheck() {
     var currentTime = new Date().getTime();
     
     if (alarmTime < currentTime || (alarmTime - currentTime) > 3600000) {
-        listenMessage('reload');
+        reloadAlarm();
     }
 }
 
@@ -163,12 +163,9 @@ function stopAudio() {
     }
 }
 
-// Listen for messages from other pages
-function listenMessage(msg) {
-    if (msg == 'reload') {
-        var clearAlarms = browser.alarms.clearAll();
-        clearAlarms.then(load);
-    }
+// Reload alarm
+function reloadAlarm() {
+    browser.alarms.clearAll(load);
 }
 
 // Update chime preference
@@ -186,7 +183,7 @@ function storageChange(changes) {
 
     if (changes.timezone) {
         timezone = changes.timezone.newValue;
-        listenMessage('reload');
+        reloadAlarm();
     }
 }
 
@@ -408,7 +405,6 @@ const ports = {};
 browser.runtime.onConnect.addListener(registerPort);
 firstLoad();
 browser.alarms.onAlarm.addListener(hourTrigger);
-chrome.runtime.onMessage.addListener(listenMessage);
 browser.storage.onChanged.addListener(storageChange);
 browser.webNavigation.onCompleted.addListener(alarmCheck);
 browser.browserAction.onClicked.addListener(stopAudio);
