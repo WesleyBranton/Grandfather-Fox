@@ -448,9 +448,9 @@ function showCurrentTime(once) {
     const output = document.getElementById('current-time');
 
     if (document.settings.timezone.value == 'auto') {
-        output.textContent = new Date().toLocaleString();
+        output.textContent = new Date().toLocaleString('en-US');
     } else {
-        output.textContent = new Date().toLocaleString("en-US", {
+        output.textContent = new Date().toLocaleString('en-US', {
             timeZone: document.settings.timezone.value
         });
     }
