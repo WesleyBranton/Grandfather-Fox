@@ -8,6 +8,8 @@ The add-on currently features a variety of audio packs, including:
 * Multiple progressive beeps
 * Clock tower
 
+You can also provide your own custom chimes.
+
 ## Development
 This repository contains all of the required source code files to make changes to this extension. The "master" branch contains the source code for the latest stable release. If you want to test that version, you can view the release section to download the XPI file or visit the add-on listing on Mozilla.
 
