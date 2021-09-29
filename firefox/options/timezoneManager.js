@@ -429,7 +429,7 @@ function refreshTimezoneList() {
     // Add automatic option
     const auto = document.createElement('option');
     auto.value = 'auto';
-    auto.textContent = 'Use System Settings';
+    auto.textContent = browser.i18n.getMessage('timezoneSystemSettings');
     select.appendChild(auto);
 
     for (let t of timezones) {
