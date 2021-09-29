@@ -13,106 +13,106 @@
     <body class="browser-style">
         <form name="settings">
             <section class="panel-section">
-                <label>Chime volume (<label id="volumeOutput">100%</label>)</label>
+                <label><span data-i18n="volumeLabel"></span> (<label id="volumeOutput">100%</label>)</label>
                 <div>
                     <input type="range" min="1" max="100" value="100" name="volume" id="chimeVolume">
                 </div>
             </section>
             <div class="panel-section-separator"></div>
             <section class="panel-section">
-                <label>Chime sound</label>
+                <label data-i18n="chimeLabel"></label>
                 <select id="chimeNoise" name="noise">
-                    <option value="tower">Clock Tower</option>
-                    <option value="cuckoo">Cuckoo Clock</option>
-                    <option value="default">Grandfather Clock</option>
-                    <option value="multibeep">Multiple Beeps</option>
-                    <option value="singlebeep">Single Beep</option>
-                    <option value="custom">Custom</option>
+                    <option value="tower" data-i18n="chimeTower"></option>
+                    <option value="cuckoo" data-i18n="chimeCuckoo"></option>
+                    <option value="default" data-i18n="chimeGrandfather"></option>
+                    <option value="multibeep" data-i18n="chimeMultiBeep"></option>
+                    <option value="singlebeep" data-i18n="chimeSingleBeep"></option>
+                    <option value="custom" data-i18n="chimeCustom"></option>
                 </select>
             </section>
             <div>
                 <div class="panel-section-separator"></div>
                 <section class="panel-section">
-                    <label>Preview chime</label>
+                    <label data-i18n="chimePreviewLabel"></label>
                     <div>
                         <select id="sample-selection" name="selectedNoise">
-                            <option value="1">Hour 1</option>
-                            <option value="2">Hour 2</option>
-                            <option value="3" selected>Hour 3</option>
-                            <option value="4">Hour 4</option>
-                            <option value="5">Hour 5</option>
-                            <option value="6">Hour 6</option>
-                            <option value="7">Hour 7</option>
-                            <option value="8">Hour 8</option>
-                            <option value="9">Hour 9</option>
-                            <option value="10">Hour 10</option>
-                            <option value="11">Hour 11</option>
-                            <option value="12">Hour 12</option>
+                            <option value="1" data-i18n="custom1"></option>
+                            <option value="2" data-i18n="custom2"></option>
+                            <option value="3" data-i18n="custom3" selected></option>
+                            <option value="4" data-i18n="custom4"></option>
+                            <option value="5" data-i18n="custom5"></option>
+                            <option value="6" data-i18n="custom6"></option>
+                            <option value="7" data-i18n="custom7"></option>
+                            <option value="8" data-i18n="custom8"></option>
+                            <option value="9" data-i18n="custom9"></option>
+                            <option value="10" data-i18n="custom10"></option>
+                            <option value="11" data-i18n="custom11"></option>
+                            <option value="12" data-i18n="custom12"></option>
                         </select>
-                        <button type="button" id="sample" class="button default">Listen</button>
+                        <button type="button" id="sample" class="button default" data-i18n="chimePreviewButton"></button>
                     </div>
                 </section>
             </div>
             <div id="custom-chime-section" class="hide">
                 <div class="panel-section-separator"></div>
                 <section class="panel-section has-help">
-                    <label>Custom chimes</label>
+                    <label data-i18n="customLabel"></label>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 1</label>
-                    <button id="custom-1" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom1"></label>
+                    <button id="custom-1" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 2</label>
-                    <button id="custom-2" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom2"></label>
+                    <button id="custom-2" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 3</label>
-                    <button id="custom-3" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom3"></label>
+                    <button id="custom-3" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 4</label>
-                    <button id="custom-4" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom4"></label>
+                    <button id="custom-4" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 5</label>
-                    <button id="custom-5" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom5"></label>
+                    <button id="custom-5" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 6</label>
-                    <button id="custom-6" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom6"></label>
+                    <button id="custom-6" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 7</label>
-                    <button id="custom-7" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom7"></label>
+                    <button id="custom-7" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 8</label>
-                    <button id="custom-8" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom8"></label>
+                    <button id="custom-8" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 9</label>
-                    <button id="custom-9" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom9"></label>
+                    <button id="custom-9" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 10</label>
-                    <button id="custom-10" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom10"></label>
+                    <button id="custom-10" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row has-help">
-                    <label>Hour 11</label>
-                    <button id="custom-11" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom11"></label>
+                    <button id="custom-11" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section class="panel-section help-row">
-                    <label>Hour 12</label>
-                    <button id="custom-12" type="button" class="button default">Add...</button>
+                    <label data-i18n="custom12"></label>
+                    <button id="custom-12" type="button" class="button default" data-i18n="customAdd"></button>
                 </section>
                 <section id="chimes-not-set" class="panel-section help-row hide">
-                    <span class="error">Some custom chimes have not been set. No chime will play on those hours.</span>
+                    <span class="error" data-i18n="errorMissingCustom"></span>
                 </section>
             </div>
             <div class="panel-section-separator"></div>
             <section class="panel-section has-help">
-                <label>Timezone</label>
+                <label data-i18n="timezoneLabel"></label>
                 <div>
                     (<a href="https://github.com/WesleyBranton/Grandfather-Fox/wiki/Wrong-hour-chime-played" target="_blank" class="internal">?</a>)
                     <select id="timezone" name="timezone">
@@ -122,7 +122,7 @@
             </section>
             <section class="panel-section help-row">
                 <span></span>
-                <span id="current-time">Unknown</span>
+                <span id="current-time"></span>
             </section>
             <section style="display: none !important;">
                 <input type="file" name="customChime" accept="audio/mpeg, audio/ogg, audio/wav">
@@ -132,10 +132,11 @@
         <div id="dialog-overlay" class="hide">
             <div id="dialog">
                 <div class="loader"></div>
-                <label>Please wait...</label>
+                <label data-i18n="pleaseWait"></label>
             </div>
         </div>
 
+        <script src="../lib/i18n_helper.js"></script>
         <script src="timezoneManager.js"></script>
         <script src="options.js"></script>
     </body>

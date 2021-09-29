@@ -1,0 +1,129 @@
+{
+    "extensionName": {
+        "message": "Grandfather Fox"
+    },
+    "extensionDescription": {
+        "message": "Turn Firefox into a grandfather clock that plays a tune at the top of each hour!"
+    },
+
+    "optionsTitle": {
+        "message": "$EXTENSIONNAME$ Options",
+        "placeholders": {
+            "extensionname": {
+                "content": "$1"
+            }
+        }
+    },
+
+    "volumeLabel": {
+        "message": "Chime volume"
+    },
+
+    "chimeLabel": {
+        "message": "Chime sound"
+    },
+    "chimeTower": {
+        "message": "Clock Tower"
+    },
+    "chimeCuckoo": {
+        "message": "Cuckoo Clock"
+    },
+    "chimeGrandfather": {
+        "message": "Grandfather Clock"
+    },
+    "chimeMultiBeep": {
+        "message": "Multiple Beeps"
+    },
+    "chimeSingleBeep": {
+        "message": "Single Beep"
+    },
+    "chimeCustom": {
+        "message": "Custom"
+    },
+    "chimePreviewLabel": {
+        "message": "Preview chime"
+    },
+    "chimePreviewButton": {
+        "message": "Listen"
+    },
+    "chimePreviewStopButton": {
+        "message": "Stop"
+    },
+
+    "customLabel": {
+        "message": "Custom chimes"
+    },
+    "customAdd": {
+        "message": "Add…"
+    },
+    "customRemove": {
+        "message": "Remove"
+    },
+    "custom1": {
+        "message": "Hour 1"
+    },
+    "custom2": {
+        "message": "Hour 2"
+    },
+    "custom3": {
+        "message": "Hour 3"
+    },
+    "custom4": {
+        "message": "Hour 4"
+    },
+    "custom5": {
+        "message": "Hour 5"
+    },
+    "custom6": {
+        "message": "Hour 6"
+    },
+    "custom7": {
+        "message": "Hour 7"
+    },
+    "custom8": {
+        "message": "Hour 8"
+    },
+    "custom9": {
+        "message": "Hour 9"
+    },
+    "custom10": {
+        "message": "Hour 10"
+    },
+    "custom11": {
+        "message": "Hour 11"
+    },
+    "custom12": {
+        "message": "Hour 12"
+    },
+
+    "timezoneLabel": {
+        "message": "Timezone"
+    },
+    "timezoneSystemSettings": {
+        "message": "Use System Settings"
+    },
+
+    "pleaseWait": {
+        "message": "Please wait…"
+    },
+
+    "errorMissingCustom": {
+        "message": "Some custom chimes have not been set. No chime will play on those hours."
+    },
+    "errorCannotRemove": {
+        "message": "Error removing chime"
+    },
+    "errorCannotAdd": {
+        "message": "Error adding chime"
+    },
+    "errorCannotPlay": {
+        "message": "Error playing chime"
+    },
+    "errorCannotLoad": {
+        "message": "Error loading chime"
+    },
+
+    "browserActionActiveLabel": {
+        "message": "Click to stop Grandfather Fox chime…"
+    }
+}

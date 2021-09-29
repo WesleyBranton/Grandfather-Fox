@@ -1,8 +1,9 @@
 {
     "manifest_version": 2,
-    "name": "Grandfather Fox",
+    "name": "__MSG_extensionName__",
     "version": "2.0",
-    "description": "Turn Firefox into a grandfather clock that plays a tune at the top of each hour!",
+    "description": "__MSG_extensionDescription__",
+    "default_locale": "en",
 
     "icons": {
         "32": "icons/icon-32.png",
@@ -22,7 +23,7 @@
     
     "browser_action": {
         "default_icon": "icons/icon-animated.gif",
-        "default_title": "Grandfather Fox"
+        "default_title": "__MSG_extensionName__"
     },
 
     "permissions": [

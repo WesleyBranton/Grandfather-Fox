@@ -94,7 +94,7 @@ function triggerChimeUpdate(event) {
  */
 function updateCustomChimeUI(hour, hasAudio) {
     const button = document.getElementById('custom-' + hour);
-    button.textContent = (hasAudio) ? 'Remove' : 'Add...';
+    button.textContent = (hasAudio) ? browser.i18n.getMessage('customRemove') : browser.i18n.getMessage('customAdd');
     button.classList.remove((hasAudio) ? 'default' : 'secondary');
     button.classList.add((hasAudio) ? 'secondary' : 'default');
 
@@ -120,7 +120,7 @@ function removeChime() {
 
     onFailed = (message) => {
         selectedHour = null;
-        alert('Error removing chime:\n' + message.error);
+        alert(browser.i18n.getMessage('errorCannotRemove') + ':\n' + message.error);
     };
 
     port.postMessage({
@@ -151,7 +151,7 @@ function addChime() {
     onFailed = (message) => {
         document.getElementsByName('customChime')[0].value = null;
         selectedHour = null;
-        alert('Error adding chime:\n' + message.error);
+        alert(browser.i18n.getMessage('errorCannotAdd') + ':\n' + message.error);
     };
 
     port.postMessage({
@@ -193,10 +193,10 @@ function addChime() {
 function isAudioPlaying() {
     if (audio.paused) {
         previewButton.classList.remove('playing');
-        previewButton.textContent = 'Listen';
+        previewButton.textContent = browser.i18n.getMessage('chimePreviewButton');
     } else {
         previewButton.classList.add('playing');
-        previewButton.textContent = 'Stop';
+        previewButton.textContent = browser.i18n.getMessage('chimePreviewStopButton');
     }
 
     previewHour.disabled = !audio.paused;
@@ -225,7 +225,7 @@ function previewChime() {
     };
 
     onFailed = (message) => {
-        alert('Error playing chime:\n' + message.error);
+        alert(browser.i18n.getMessage('errorCannotPlay') + ':\n' + message.error);
     };
 
     port.postMessage({
@@ -247,7 +247,7 @@ function updateCustomAudioList() {
     };
 
     onFailed = (message) => {
-        alert('Error loading chimes:\n' + message.error);
+        alert(browser.i18n.getMessage('errorCannotLoad') + ':\n' + message.error);
     };
 
     port.postMessage({
@@ -331,6 +331,8 @@ var chimeVolume = 1;
 let selectedHour = null;
 let hoursWithChime = [0, false, false, false, false, false, false, false, false, false, false, false, false];
 
+document.title = browser.i18n.getMessage('optionsTitle', browser.i18n.getMessage('extensionName'));
+i18nParse();
 restoreOptions();
 
 previewButton.addEventListener('click', playAudio);

@@ -146,13 +146,13 @@ function getNextTime() {
 
 // Audio is playing
 function audioStarted() {
-    browser.browserAction.setTitle({title: 'Click to stop Grandfather Fox chime...'});
+    browser.browserAction.setTitle({title: browser.i18n.getMessage('browserActionActiveLabel')});
     browser.browserAction.setBadgeText({text: '\u25B6'});
 }
 
 // Audio has finished
 function audioEnded() {
-    browser.browserAction.setTitle({title: 'Grandfather Fox'});
+    browser.browserAction.setTitle({title: browser.i18n.getMessage('extensionName')});
     browser.browserAction.setBadgeText({text: ''});
 }
 
