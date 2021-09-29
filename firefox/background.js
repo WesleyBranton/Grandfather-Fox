@@ -406,7 +406,7 @@ browser.runtime.onConnect.addListener(registerPort);
 firstLoad();
 browser.alarms.onAlarm.addListener(hourTrigger);
 browser.storage.onChanged.addListener(storageChange);
-browser.webNavigation.onCompleted.addListener(alarmCheck);
+browser.tabs.onUpdated.addListener(alarmCheck);
 browser.browserAction.onClicked.addListener(stopAudio);
 browser.browserAction.setBadgeBackgroundColor({color: '#3C3'});
 browser.browserAction.setBadgeTextColor({color: 'white'});
