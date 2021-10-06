@@ -1,0 +1,129 @@
+{
+    "extensionName": {
+        "message": "Nonno Volpe"
+    },
+    "extensionDescription": {
+        "message": "Trasforma Firefox nell'orologio del nonno, che suona una musichetta ogni ora!"
+    },
+
+    "optionsTitle": {
+        "message": "$EXTENSIONNAME$ Opzioni",
+        "placeholders": {
+            "extensionname": {
+                "content": "$1"
+            }
+        }
+    },
+
+    "volumeLabel": {
+        "message": "Volume carillon"
+    },
+
+    "chimeLabel": {
+        "message": "Suono carillon"
+    },
+    "chimeTower": {
+        "message": "Orologio della torre"
+    },
+    "chimeCuckoo": {
+        "message": "Orologio a cucù"
+    },
+    "chimeGrandfather": {
+        "message": "Orologio del nonno"
+    },
+    "chimeMultiBeep": {
+        "message": "Beep multipli"
+    },
+    "chimeSingleBeep": {
+        "message": "Singolo Beep"
+    },
+    "chimeCustom": {
+        "message": "Personalizzato"
+    },
+    "chimePreviewLabel": {
+        "message": "Anteprima carillon"
+    },
+    "chimePreviewButton": {
+        "message": "Ascolta"
+    },
+    "chimePreviewStopButton": {
+        "message": "Stop"
+    },
+
+    "customLabel": {
+        "message": "Carillon personalizzato"
+    },
+    "customAdd": {
+        "message": "Aggiungi…"
+    },
+    "customRemove": {
+        "message": "Rimuovi"
+    },
+    "custom1": {
+        "message": "Ora 1"
+    },
+    "custom2": {
+        "message": "Ora 2"
+    },
+    "custom3": {
+        "message": "Ora 3"
+    },
+    "custom4": {
+        "message": "Ora 4"
+    },
+    "custom5": {
+        "message": "Ora 5"
+    },
+    "custom6": {
+        "message": "Ora 6"
+    },
+    "custom7": {
+        "message": "Ora 7"
+    },
+    "custom8": {
+        "message": "Ora 8"
+    },
+    "custom9": {
+        "message": "Ora 9"
+    },
+    "custom10": {
+        "message": "Ora 10"
+    },
+    "custom11": {
+        "message": "Ora 11"
+    },
+    "custom12": {
+        "message": "Ora 12"
+    },
+
+    "timezoneLabel": {
+        "message": "Fuso orario"
+    },
+    "timezoneSystemSettings": {
+        "message": "Usa impostazioni di sistema"
+    },
+
+    "pleaseWait": {
+        "message": "Prego attendere…"
+    },
+
+    "errorMissingCustom": {
+        "message": "Alcuni carillon personalizzati non sono stati impostati. Per quelle ore non suonerà nessun carillon."
+    },
+    "errorCannotRemove": {
+        "message": "Errore  durante la rimozione carillon"
+    },
+    "errorCannotAdd": {
+        "message": "Errore  durante l'aggiunta del carillon"
+    },
+    "errorCannotPlay": {
+        "message": "Errore durante il suono del carillon"
+    },
+    "errorCannotLoad": {
+        "message": "Errore durante il caricamento del carillon"
+    },
+
+    "browserActionActiveLabel": {
+        "message": "Clicca per fermare il carillon Nonno Volpe"
+    }
+}
