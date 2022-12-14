@@ -394,16 +394,49 @@ function handleInstalled(details) {
         const previousVersion = parseFloat(details.previousVersion);
         if (previousVersion < 2) {
             browser.tabs.create({
-                url: 'https://addons.wesleybranton.com/addon/grandfather-fox/update/v2_0'
+                url: `${webBase}/update/v2_0`
             });
         }
     }
 }
 
+/**
+ * Set up uninstall page
+ */
+function setUninstallPage() {
+    getSystemDetails((details) => {
+        browser.runtime.setUninstallURL(`${webBase}/uninstall/?browser=${details.browser}&os=${details.os}&version=${details.version}`);
+    });
+}
+
+/**
+ * Send system details to callback
+ * @param {Function} callback
+ */
+function getSystemDetails(callback) {
+    browser.runtime.getPlatformInfo((platform) => {
+        callback({
+            browser: getBrowserName().toLowerCase(),
+            version: browser.runtime.getManifest().version,
+            os: platform.os
+        });
+    });
+}
+
+/**
+ * Get browser name
+ * @returns Browser name
+ */
+function getBrowserName() {
+    return 'FIREFOX';
+}
+
+const webBase = 'https://addons.wesleybranton.com/addon/grandfather-fox';
 var chimeName, chimeVolume, audio, timezone;
 const ports = {};
 browser.runtime.onConnect.addListener(registerPort);
 firstLoad();
+setUninstallPage();
 browser.alarms.onAlarm.addListener(hourTrigger);
 browser.storage.onChanged.addListener(storageChange);
 browser.tabs.onUpdated.addListener(alarmCheck);
