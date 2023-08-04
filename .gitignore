@@ -1,1 +1,5 @@
+# Don't track these folders
+build/
 *.zip
+*.crx
+*.pem

@@ -14,7 +14,11 @@
     },
     
     "background": {
-        "scripts": [ "lib/idb-file-storage.js", "background.js" ]
+        "scripts": [
+            "lib/idb-file-storage.js",
+            "shared/storageUtils.js",
+            "background.js"
+        ]
     },
     
     "options_ui": {

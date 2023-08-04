@@ -21,7 +21,7 @@
             <div class="panel-section-separator"></div>
             <section class="panel-section">
                 <label data-i18n="chimeLabel"></label>
-                <select id="chimeNoise" name="noise">
+                <select id="chimeNoise" name="chime">
                     <option value="tower" data-i18n="chimeTower"></option>
                     <option value="cuckoo" data-i18n="chimeCuckoo"></option>
                     <option value="default" data-i18n="chimeGrandfather"></option>
@@ -35,7 +35,7 @@
                 <section class="panel-section">
                     <label data-i18n="chimePreviewLabel"></label>
                     <div>
-                        <select id="sample-selection" name="selectedNoise">
+                        <select id="sample-selection" name="hour">
                             <option value="1" data-i18n="custom1"></option>
                             <option value="2" data-i18n="custom2"></option>
                             <option value="3" data-i18n="custom3" selected></option>
@@ -136,8 +136,10 @@
             </div>
         </div>
 
+        <script src="../crossbrowser.js"></script>
         <script src="../lib/i18n_helper.js"></script>
         <script src="timezoneManager.js"></script>
+        <script src="../shared/storageUtils.js"></script>
         <script src="options.js"></script>
     </body>
 </html>
