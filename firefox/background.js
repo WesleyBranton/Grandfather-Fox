@@ -39,9 +39,16 @@ function checkAlarm() {
 }
 
 /**
- * Play chime
+ * Load and play the chime audio
+ * @async
  */
-async function playChime() {
+async function triggerChime(alarm) {
+    const timeDifference = Math.abs(alarm.scheduledTime - Date.now());
+    if (timeDifference > 10000) { // 10 seconds
+        createAlarm();
+        return;
+    }
+
     let settings = await browser.storage.local.get(['chime', 'volume', 'timezone']);
     settings = fillDefaultSettings(settings);
     const hour = getChimeHour(settings.timezone);
@@ -50,7 +57,7 @@ async function playChime() {
     if (settings.chime == 'custom') {
         url = await ChimeManager.getInstance().get(hour);
     } else {
-        url = `audio/${settings.chime}/${hour}.ogg`;
+        url = browser.runtime.getURL(`audio/${settings.chime}/${hour}.ogg`);
     }
 
     if (typeof url != 'string') {
@@ -58,23 +65,7 @@ async function playChime() {
         return;
     }
 
-    stopChime();
-    audio = new Audio(url);
-    audio.addEventListener('ended', handleAudioEnded);
-    audio.addEventListener('pause', handleAudioEnded);
-    audio.addEventListener('play', handleAudioStarted);
-    audio.volume = settings.volume;
-    audio.play();
-}
-
-/**
- * Stop chime
- */
-function stopChime() {
-    if (audio != null) {
-        audio.pause();
-        audio = null;
-    }
+    await playChime(url, settings.volume);
 }
 
 /**
@@ -144,16 +135,6 @@ function handleAudioEnded() {
 }
 
 /**
- * Handle browser action click
- */
-function handleBrowserActionClicked() {
-    if (audio != null) {
-        audio.pause();
-        audio = null;
-    }
-}
-
-/**
  * Handles changes to Storage API
  * @param {Object} changes
  */
@@ -168,6 +149,22 @@ function handleStorageChange(changes) {
                 createAlarm();
                 break;
         }
+    }
+}
+
+/**
+ * Handle incoming runtime messages
+ * @param {Object} message
+ */
+function handleMessage(message) {
+    if (typeof message.target == 'string' && message.target != 'background') {
+        return;
+    }
+
+    switch (message.command.toUpperCase()) {
+        case 'STOP':
+            stopChime();
+            break;
     }
 }
 
@@ -250,26 +247,22 @@ function getSystemDetails(callback) {
     });
 }
 
-/**
- * Get browser name
- * @returns Browser name
- */
-function getBrowserName() {
-    return 'FIREFOX';
-}
-
 const ALARM_NAME = 'grandfather-fox';
-const DEFAULT_TIMEZONE = 'auto';
+const OFFSCREEN_DOCUMENT = 'offscreen/offscreen.html';
 const webBase = 'https://addons.wesleybranton.com/addon/grandfather-fox';
 
-let audio = null;
+if (typeof browser != 'object') { // Chrome
+    importScripts('crossbrowser.js', 'shared/storageUtils.js', 'audioPlayer.js');
+    browser.browserAction = browser.action;
+}
 
 browser.runtime.onInstalled.addListener(handleInstalled);
-browser.alarms.onAlarm.addListener(playChime);
+browser.alarms.onAlarm.addListener(triggerChime);
 browser.storage.onChanged.addListener(handleStorageChange);
 browser.tabs.onUpdated.addListener(checkAlarm);
+browser.runtime.onMessage.addListener(handleMessage);
+browser.browserAction.onClicked.addListener(stopChime);
+browser.browserAction.setBadgeBackgroundColor({color: '#3C3'});
+browser.browserAction.setBadgeTextColor({color: 'white'});
 
-    browser.browserAction.setBadgeBackgroundColor({color: '#3C3'});
-    browser.browserAction.setBadgeTextColor({color: 'white'});
-}
 init();

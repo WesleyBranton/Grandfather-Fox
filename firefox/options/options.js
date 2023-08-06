@@ -3,6 +3,27 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /**
+ * Initialize page
+ */
+function init() {
+    setViewMode();
+    document.title = browser.i18n.getMessage('optionsTitle', browser.i18n.getMessage('extensionName'));
+    i18nParse();
+    restoreOptions();
+}
+
+/**
+ * Set browser options to tab or builtin mode
+ */
+function setViewMode() {
+    const mode = new URL(document.location.href).searchParams.get('view');
+    if (mode != 'builtin') {
+        document.body.classList.add('browser-style-page');
+        document.settings.classList.add('browser-style-container');
+    }
+}
+
+/**
  * Save settings to Storage API
  */
 function saveOptions() {
@@ -310,9 +331,7 @@ const volumeOutput = document.getElementById('volumeOutput');
 const previewButton = document.getElementById('sample');
 let audio = null;
 
-document.title = browser.i18n.getMessage('optionsTitle', browser.i18n.getMessage('extensionName'));
-i18nParse();
-restoreOptions();
+init();
 
 previewButton.addEventListener('click', playAudio);
 document.settings.volume.addEventListener('input', updateVolumeOutput);

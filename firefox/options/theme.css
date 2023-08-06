@@ -65,3 +65,7 @@
     font-size: 2em;
     margin-left: 1em;
 }
+
+body:not(.browser-style-page) header {
+    display: none !important;
+}
