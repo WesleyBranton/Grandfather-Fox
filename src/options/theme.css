@@ -1,0 +1,71 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+#customChime > div {
+    display: flex;
+}
+
+#customChime > div > span:first-of-type {
+    flex: 1;
+}
+
+#custom-chime-section > .help-row > label {
+    margin-left: 1em;
+}
+
+.hide {
+    display: none !important;
+}
+
+.error {
+    color: var(--red-60);
+}
+
+.loader {
+    border: 0.4em solid transparent;
+    border-radius: 50%;
+    border-top: 0.4em solid var(--blue-60);
+    width: 2em;
+    height: 2em;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#dialog-overlay {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#dialog {
+    background: var(--container-background);
+    margin: auto;
+    width: max-content;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    box-shadow: 5px 5px 5px var(--border-color);
+    border-radius: 5px;
+}
+
+#dialog > label {
+    flex: 1;
+    font-size: 2em;
+    margin-left: 1em;
+}
+
+body:not(.browser-style-page) header {
+    display: none !important;
+}

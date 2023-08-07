@@ -10,8 +10,13 @@
         <link rel="stylesheet" href="../lib/new_browser_style.css">
         <link rel="stylesheet" href="theme.css">
     </head>
-    <body class="browser-style">
+    <body class="browser-style clickable-labels">
         <form name="settings">
+            <header class="panel-section panel-section-header">
+                <img class="icon-section-header" src="../icons/icon-128.png" alt="CS">
+                <h1 class="text-section-header" data-i18n="optionsTitle" data-i18n-placeholders="extensionName"></h1>
+            </header>
+
             <section class="panel-section">
                 <label><span data-i18n="volumeLabel"></span> (<label id="volumeOutput">100%</label>)</label>
                 <div>
