@@ -337,6 +337,16 @@ async function togglePreviewButton() {
 }
 
 /**
+ * Open feedback window
+ */
+function openFeedback() {
+    browser.runtime.sendMessage({
+        command: 'feedback',
+        target: 'background'
+    });
+}
+
+/**
  * Track if an async task is in progress
  * @param {boolean} complete
  */
@@ -355,6 +365,7 @@ document.settings.volume.addEventListener('input', updateVolumeOutput);
 document.settings.addEventListener('change', saveOptions);
 document.settings.customChime.addEventListener('change', addChime);
 document.settings.chime.addEventListener('change', toggleCustomAudio);
+document.getElementById('feedbacklink').addEventListener('click', openFeedback);
 
 for (let i = 1; i <= 12; i++) {
     document.getElementById('custom-' + i).addEventListener('click', triggerChimeUpdate);

@@ -165,6 +165,9 @@ function handleMessage(message) {
         case 'STOP':
             stopChime();
             break;
+        case 'FEEDBACK':
+            openFeedback();
+            break;
     }
 }
 
@@ -243,6 +246,20 @@ function getSystemDetails(callback) {
             browser: getBrowserName().toLowerCase(),
             version: browser.runtime.getManifest().version,
             os: platform.os
+        });
+    });
+}
+
+/**
+ * Open feedback window
+ */
+function openFeedback() {
+    getSystemDetails((details) => {
+        browser.windows.create({
+            height: 700,
+            width: 450,
+            type: browser.windows.CreateType.PANEL,
+            url: `${webBase}/feedback/?browser=${details.browser}&os=${details.os}&version=${details.version}`
         });
     });
 }
