@@ -103,6 +103,16 @@
         "message": "Usa impostazioni di sistema"
     },
 
+    "linkHelp": {
+        "message": "Supporto"
+    },
+    "linkDonate": {
+        "message": "Dona"
+    },
+    "linkFeedback": {
+        "message": "Feedback"
+    },
+
     "pleaseWait": {
         "message": "Prego attendere…"
     },

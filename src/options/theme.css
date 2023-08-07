@@ -69,3 +69,17 @@
 body:not(.browser-style-page) header {
     display: none !important;
 }
+
+.panel-section-footer > div {
+    border-left: 1px solid var(--border-color);
+    padding: 0.5em;
+    text-align: center;
+}
+
+.panel-section-footer a {
+    cursor: pointer;
+}
+
+.panel-section-footer > div:first-of-type {
+    border: none;
+}

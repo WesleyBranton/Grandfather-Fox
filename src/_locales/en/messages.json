@@ -103,6 +103,16 @@
         "message": "Use System Settings"
     },
 
+    "linkHelp": {
+        "message": "Help"
+    },
+    "linkDonate": {
+        "message": "Donate"
+    },
+    "linkFeedback": {
+        "message": "Feedback"
+    },
+
     "pleaseWait": {
         "message": "Please wait…"
     },
