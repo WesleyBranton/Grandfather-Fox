@@ -32,6 +32,7 @@ function saveOptions() {
         volume: document.settings.volume.value / 100,
         timezone: document.settings.timezone.value
     });
+    togglePreviewButton();
 }
 
 /**
@@ -126,6 +127,7 @@ async function removeChime(hour) {
     } catch (error) {
         alert(browser.i18n.getMessage('errorCannotRemove') + ':\n' + error);
     } finally {
+        togglePreviewButton();
         toggleDialog(false);
     }
 }
@@ -158,6 +160,7 @@ function addChime() {
             document.getElementsByName('customChime')[0].value = null;
             alert(browser.i18n.getMessage('errorCannotAdd') + ':\n' + error);
         } finally {
+            togglePreviewButton();
             toggleDialog(false);
         }
     };
@@ -284,6 +287,7 @@ async function updateCustomAudioList() {
             await updateCustomChimeUI(hour);
         }
         await toggleCustomWarning();
+        await togglePreviewButton();
     } catch (error) {
         alert(browser.i18n.getMessage('errorCannotLoad') + ':\n' + error);
     }
@@ -317,6 +321,19 @@ async function toggleCustomWarning() {
     } else {
         warning.classList.add('hide');
     }
+}
+
+/**
+ * Disable/Enable preview button only if the selected hour has a chime set
+ */
+async function togglePreviewButton() {
+    if (document.settings.chime.value != 'custom') {
+        previewButton.disabled = false;
+        return;
+    }
+
+    const selectedHour = parseInt(document.settings.hour.value);
+    previewButton.disabled = !await ChimeManager.getInstance().has(selectedHour);
 }
 
 /**
