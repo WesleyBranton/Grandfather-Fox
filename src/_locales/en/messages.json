@@ -59,6 +59,9 @@
     "customRemove": {
         "message": "Remove"
     },
+    "customDownload": {
+        "message": "Download"
+    },
     "custom1": {
         "message": "Hour 1"
     },

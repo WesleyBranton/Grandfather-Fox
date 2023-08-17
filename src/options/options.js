@@ -103,10 +103,15 @@ async function triggerChimeUpdate(event) {
  */
 async function updateCustomChimeUI(hour) {
     const hasAudio = await ChimeManager.getInstance().has(hour);
-    const button = document.getElementById('custom-' + hour);
-    button.textContent = (hasAudio) ? browser.i18n.getMessage('customRemove') : browser.i18n.getMessage('customAdd');
-    button.classList.remove((hasAudio) ? 'default' : 'secondary');
-    button.classList.add((hasAudio) ? 'secondary' : 'default');
+
+    const editButton = document.getElementById('custom-' + hour);
+    editButton.title = (hasAudio) ? browser.i18n.getMessage('customRemove') : browser.i18n.getMessage('customAdd');
+    editButton.classList.remove((hasAudio) ? 'default' : 'secondary');
+    editButton.classList.add((hasAudio) ? 'secondary' : 'default');
+
+    const downloadButton = document.getElementById(`custom-${hour}-download`);
+    downloadButton.disabled = !hasAudio;
+
     await toggleCustomWarning();
 }
 
@@ -278,6 +283,48 @@ async function previewChime() {
 }
 
 /**
+ * Handle custom chime download event
+ * @param {Event} event
+ */
+async function triggerChimeDownload(event) {
+    const hour = parseInt(event.currentTarget.id.split('-')[1]);
+    const granted = await browser.permissions.request({
+        permissions: ['downloads']
+    });
+    if (granted) {
+        downloadChime(hour);
+    } else {
+        console.error('Missing permissions to manage downloads');
+        alert('Missing permissions');
+    }
+}
+
+/**
+ * Download a custom chime
+ * @param {Number} hour
+ */
+async function downloadChime(hour) {
+    const chime = await ChimeManager.getInstance().get(hour);
+    if (chime != null) {
+        // Convert data URL to blob
+        const bytes = atob(chime.data.split(',')[1]);
+        const mime = chime.data.split(',')[0].split(':')[1].split(';')[0];
+        const buffer = new ArrayBuffer(bytes.length);
+        const byteArray = new Uint8Array(buffer);
+        for (let i = 0; i < bytes.length; i++) {
+            byteArray[i] = bytes.charCodeAt(i);
+        }
+        const file = new Blob([buffer], {type: mime});
+
+        browser.downloads.download({
+            filename: chime.name,
+            url: URL.createObjectURL(file),
+            saveAs: true
+        });
+    }
+}
+
+/**
  * Bulk update the custom audio section
  */
 async function updateCustomAudioList() {
@@ -369,4 +416,5 @@ document.getElementById('feedbacklink').addEventListener('click', openFeedback);
 
 for (let i = 1; i <= 12; i++) {
     document.getElementById('custom-' + i).addEventListener('click', triggerChimeUpdate);
+    document.getElementById(`custom-${i}-download`).addEventListener('click', triggerChimeDownload);
 }

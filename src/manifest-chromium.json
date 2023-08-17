@@ -39,5 +39,9 @@
         "storage",
         "unlimitedStorage",
         "offscreen"
+    ],
+
+    "optional_permissions": [
+        "downloads"
     ]
 }

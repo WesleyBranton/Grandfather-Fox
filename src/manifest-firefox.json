@@ -37,5 +37,9 @@
         "alarms",
         "storage",
         "unlimitedStorage"
+    ],
+
+    "optional_permissions": [
+        "downloads"
     ]
 }
