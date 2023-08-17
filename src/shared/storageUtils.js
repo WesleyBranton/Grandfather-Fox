@@ -49,7 +49,7 @@ class ChimeManager {
         const key = this.#getKey(hour);
         const data = await browser.storage.local.get([key]);
 
-        if (typeof data[key] != 'string') {
+        if (typeof data[key] != 'object') {
             return null;
         }
 
@@ -59,15 +59,19 @@ class ChimeManager {
     /**
      * Set chime
      * @param {Number} hour
+     * @param {String} name
      * @param {String} data
      */
-    async set(hour, data) {
+    async set(hour, name, data) {
         await this.list(true);
         this.#chimes.add(hour);
 
         const newData = {};
         newData['customChimes'] = Array.from(this.#chimes);
-        newData[this.#getKey(hour)] = data;
+        newData[this.#getKey(hour)] = {
+            name: name,
+            data: data
+        };
 
         await browser.storage.local.set(newData);
     }

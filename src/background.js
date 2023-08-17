@@ -55,7 +55,8 @@ async function triggerChime(alarm) {
     let url = null;
 
     if (settings.chime == 'custom') {
-        url = await ChimeManager.getInstance().get(hour);
+        const chime = await ChimeManager.getInstance().get(hour);
+        url = (chime != null) ? chime.data : null;
     } else {
         url = browser.runtime.getURL(`audio/${settings.chime}/${hour}.ogg`);
     }
@@ -214,7 +215,10 @@ async function migrateToStorageApi() {
                     };
                     reader.readAsDataURL(audio);
                 });
-                data[`customChime${hour}`] = audioUrl;
+                data[`customChime${hour}`] = {
+                    name: audio.name,
+                    data: audioUrl
+                };
                 data.customChimes.push(hour);
             } catch (error) {
                 console.warn('Failed to migrate %s:', f, error);

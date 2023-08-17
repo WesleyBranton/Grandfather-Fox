@@ -153,7 +153,7 @@ function addChime() {
     const reader = new FileReader();
     reader.onload = async (event) => {
         try {
-            await ChimeManager.getInstance().set(hour, event.target.result);
+            await ChimeManager.getInstance().set(hour, document.settings.customChime.files[0].name, event.target.result);
             updateCustomChimeUI(hour);
             document.getElementsByName('customChime')[0].value = null;
         } catch (error) {
@@ -262,7 +262,7 @@ async function previewChime() {
     try {
         const chime = await ChimeManager.getInstance().get(parseInt(document.settings.hour.value));
         if (chime != null) {
-            audio = new Audio(chime);
+            audio = new Audio(chime.data);
             audio.addEventListener('ended', isAudioPlaying);
             audio.volume = document.settings.volume.value / 100;
             audio.play();
