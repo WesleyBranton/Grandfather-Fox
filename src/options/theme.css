@@ -100,3 +100,12 @@ button.fit i {
     display: block;
     width: 1em;
 }
+
+#volumeContainer {
+    display: flex;
+    align-items: center;
+}
+
+#volumeContainer #volumeOutput {
+    margin-right: 0.5em;
+}
