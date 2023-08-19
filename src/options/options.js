@@ -86,7 +86,7 @@ function toggleCustomAudio() {
  * @param {Event} event
  */
 async function triggerChimeUpdate(event) {
-    const hour = parseInt(event.target.id.split('-')[1]);
+    const hour = parseInt(event.currentTarget.id.split('-')[1]);
     const exists = await ChimeManager.getInstance().has(hour);
 
     if (exists) { // Chime exists
