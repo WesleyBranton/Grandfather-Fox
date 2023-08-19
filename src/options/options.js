@@ -109,6 +109,15 @@ async function updateCustomChimeUI(hour) {
     editButton.classList.remove((hasAudio) ? 'default' : 'secondary');
     editButton.classList.add((hasAudio) ? 'secondary' : 'default');
 
+    const editButtonIcon = editButton.getElementsByTagName('i')[0];
+    if (hasAudio) {
+        editButtonIcon.classList.remove('fa-add');
+        editButtonIcon.classList.add('fa-remove');
+    } else {
+        editButtonIcon.classList.remove('fa-remove');
+        editButtonIcon.classList.add('fa-add');
+    }
+
     const downloadButton = document.getElementById(`custom-${hour}-download`);
     downloadButton.disabled = !hasAudio;
 
@@ -241,11 +250,13 @@ function isAudioPlaying() {
     const paused = audio == null || audio.paused;
 
     if (paused) {
-        previewButton.classList.remove('playing');
-        previewButton.textContent = browser.i18n.getMessage('chimePreviewButton');
+        previewButton.title = browser.i18n.getMessage('chimePreviewButton');
+        previewButtonIcon.classList.remove('fa-stop');
+        previewButtonIcon.classList.add('fa-play');
     } else {
-        previewButton.classList.add('playing');
-        previewButton.textContent = browser.i18n.getMessage('chimePreviewStopButton');
+        previewButton.title = browser.i18n.getMessage('chimePreviewStopButton');
+        previewButtonIcon.classList.remove('fa-play');
+        previewButtonIcon.classList.add('fa-stop');
     }
 
     document.settings.hour.disabled = !paused;
@@ -403,6 +414,7 @@ function asyncTask(complete) {
 
 const volumeOutput = document.getElementById('volumeOutput');
 const previewButton = document.getElementById('sample');
+const previewButtonIcon = previewButton.getElementsByTagName('i')[0];
 let audio = null;
 
 init();
