@@ -83,3 +83,29 @@ body:not(.browser-style-page) header {
 .panel-section-footer > div:first-of-type {
     border: none;
 }
+
+#custom-chime-section button {
+    margin-left: 0.5em;
+}
+
+button.custom-download:disabled {
+    visibility: hidden;
+}
+
+button.fit {
+    min-width: 0 !important;
+}
+
+button.fit i {
+    display: block;
+    width: 1em;
+}
+
+#volumeContainer {
+    display: flex;
+    align-items: center;
+}
+
+#volumeContainer #volumeOutput {
+    margin-right: 0.5em;
+}
